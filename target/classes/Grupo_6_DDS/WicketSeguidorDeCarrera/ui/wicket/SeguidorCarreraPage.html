@@ -1,9 +1,14 @@
 <html>
     <head>
-        <title>Wicket Quickstart Archetype Homepage</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    	<!-- Bootstrap --> 
+    	<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+    	<link href="css/bootstrap-theme.css" rel="stylesheet" media="screen">  
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Seguidor de Carrera</title>
     </head>
     <body>
-    <div class="container">
+	    <div class="container">
         <table width="80%">
             <tr>
                 <td>
@@ -12,8 +17,52 @@
             </tr>
         </table>
         
-        <form wicket:id="seguidorCarreraForm" class="form-horizontal">
-        </form>
-    </body>
+        <form wicket:id="seguidorCarreraForm" class="form-vertical">
+           		<label class="control-label" for="materias">Materias</label>
+        		<select wicket:id="materia"></select>
+            <div class="form-actions">
+                <button wicket:id="buscar" class="btn btn-primary" type="submit">Buscar</button>
+                <button wicket:id="limpiar" class="btn">Limpiar</button>
+                <button wicket:id="nuevo" class="btn btn-success">Nuevo Celular</button>
+            </div>
+            <br/>
+            
+           	<table class="table table-striped table-bordered table-condensed">
+           		<thead>
+	           		<tr>
+	               		<th id="main">Nombre</th>
+	               		<th id="main">N&uacute;mero</th>
+	               		<th id="main">Modelo</th>
+	               		<th id="main">Recibe resumen</th>
+	               		<th id="main">Acciones</th>
+	               	</tr>
+	            </thead>
+				<tbody>
+	               	<tr wicket:id="resultados">
+	                   	<td>
+	                   	    <span wicket:id="nombre">unNombre</span> 
+	               	    </td> 
+	           	        <td>
+	       	            	<span wicket:id="numero">unNumero</span>
+	   	                </td> 
+	           	        <td>
+	       	            	<span wicket:id="modeloCelular.descripcion">unModelo</span>
+	   	                </td> 
+	           	        <td>
+	       	            	<input type="checkbox" wicket:id="recibeResumenCuenta"/>
+	   	                </td> 
+	           	        <td>
+	           	        	<div class="btn-group">
+	           	        		<button wicket:id="editar" class="btn-link">Editar</button>
+	           	        		<button wicket:id="eliminar" class="btn-link">Eliminar</button>
+	           	        	</div>
+	   	                </td> 
+	               	</tr>
+               	</tbody>
+           	</table>
+            <br/>
+     		</form>
+     	 </div>
+     </body>
 </html>
 
