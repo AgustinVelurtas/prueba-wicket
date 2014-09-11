@@ -3,9 +3,11 @@ package Grupo_6_DDS.WicketSeguidorDeCarrera.ui.wicket;
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Materia;
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Nota;
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.SeguidorCarrera;
+import java.util.List;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.ListChoice;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
@@ -25,8 +27,6 @@ public class SeguidorCarreraPage extends WebPage {
     CompoundPropertyModel _compoundPropertyModel = new CompoundPropertyModel(this.seguidor);
     final Form seguidorForm = new Form("seguidorCarreraForm", _compoundPropertyModel);
     this.agregarListaMaterias(seguidorForm);
-    this.agregarDetallesMateria(seguidorForm);
-    this.agregarAcciones(seguidorForm);
     this._wicketExtensionFactoryMethods.addChild(this, seguidorForm);
   }
   
@@ -89,22 +89,17 @@ public class SeguidorCarreraPage extends WebPage {
   }
   
   public Object agregarDetallesMateria(final Form parent) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nno viable alternative at input \')\'"
-      + "\nmissing \')\' at \'agregarGrillaDeNotas\'"
-      + "\nThe method finalAprobado is undefined for the type SeguidorCarreraPage"
-      + "\nThe method setText is undefined for the type SeguidorCarreraPage"
-      + "\nThe method profesor is undefined for the type SeguidorCarreraPage"
-      + "\nThe method agregarGrillaDeNotas is undefined for the type SeguidorCarreraPage");
+    return null;
   }
   
-  public Object agregarListaMaterias(final Form parent) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field listNumbers is undefined for the type SeguidorCarreraPage"
-      + "\nThe method or field selectedNumber is undefined for the type SeguidorCarreraPage"
-      + "\nThe method or field NUMBERS is undefined for the type SeguidorCarreraPage"
-      + "\nInvalid number of type arguments. The constructor ListMultipleChoice is not applicable for the type arguments <String>"
-      + "\nThis expression is not allowed in this context, since it doesn\'t cause any side effects.");
+  public MarkupContainer agregarListaMaterias(final Form parent) {
+    MarkupContainer _xblockexpression = null;
+    {
+      final List<Materia> materias = this.seguidor.getMaterias();
+      final ListChoice listaMaterias = new ListChoice("listaMaterias", materias);
+      _xblockexpression = this._wicketExtensionFactoryMethods.addChild(parent, listaMaterias);
+    }
+    return _xblockexpression;
   }
   
   public Object editar(final Materia materia) {

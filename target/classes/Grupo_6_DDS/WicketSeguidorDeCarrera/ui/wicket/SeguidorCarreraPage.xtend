@@ -1,6 +1,5 @@
 package Grupo_6_DDS.WicketSeguidorDeCarrera.ui.wicket
 
-import java.io.Serializable
 import java.util.List
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Materia
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Nota
@@ -18,6 +17,7 @@ import org.apache.wicket.markup.html.form.ListMultipleChoice
 import org.apache.wicket.model.Model
 import org.apache.wicket.markup.html.panel.Panel
 import org.uqbar.wicket.xtend.XButton
+import org.apache.wicket.markup.html.form.ListChoice
 
 class SeguidorCarreraPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -29,8 +29,8 @@ class SeguidorCarreraPage extends WebPage {
 		val Form seguidorForm = new Form("seguidorCarreraForm", new CompoundPropertyModel(this.seguidor))
 		
 		this.agregarListaMaterias(seguidorForm)
-		this.agregarDetallesMateria(seguidorForm)
-		this.agregarAcciones(seguidorForm)
+		/*this.agregarDetallesMateria(seguidorForm)
+		this.agregarAcciones(seguidorForm)*/
 		
 		this.addChild(seguidorForm)	
 	}
@@ -59,26 +59,20 @@ class SeguidorCarreraPage extends WebPage {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
-	def agregarDetallesMateria(Form parent) {
+	def agregarDetallesMateria(Form parent) {/*
 		//Info de la materia elegida		
 		parent.addChild(new Label("nombre"))
 		parent.addChild(new)
 		parent.addChild(new Label("anioCursada"))
 		parent.addChild(new CheckBox("model.finalAprobado").setEnabled(model.finalAprobado))
 		parent.addChild(new Label("profesor".setText(model.profesor)
-		agregarGrillaDeNotas(parent)
+		agregarGrillaDeNotas(parent)*/
 	}
 
  def agregarListaMaterias(Form parent) {
-	/*val listView = new XListView("resultados")
-	listView.populateItem = [ item |
-			item.model = item.modelObject.asCompoundModel
-			item.addChild(new Label("nombre"))			
-			item.addChild(new XButton("editar").onClick = [| editar(item.modelObject) ])
-		
-		parent.addChild(listView)*/
-		ListMultipleChoice listNumbers = new ListMultipleChoice<String>(
-				"number", new Model(selectedNumber), NUMBERS);
+		val List<Materia> materias = seguidor.materias
+		val ListChoice listaMaterias = new ListChoice("listaMaterias", materias)
+		parent.addChild(listaMaterias)
 }
 	
 	def editar(Materia materia){

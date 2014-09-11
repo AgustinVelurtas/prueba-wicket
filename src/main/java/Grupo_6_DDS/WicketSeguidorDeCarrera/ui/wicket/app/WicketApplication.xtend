@@ -2,7 +2,6 @@ package Grupo_6_DDS.WicketSeguidorDeCarrera.ui.wicket.app;
 
 import org.apache.wicket.protocol.http.WebApplication;
 
-import Grupo_6_DDS.WicketSeguidorDeCarrera.ui.wicket.HomePage;
 import org.uqbar.commons.utils.ApplicationContext
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.UbicacionMateria
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.HomeUbicacionMaterias
