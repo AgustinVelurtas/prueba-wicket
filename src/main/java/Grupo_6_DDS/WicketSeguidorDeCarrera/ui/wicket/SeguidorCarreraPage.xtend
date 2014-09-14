@@ -1,6 +1,7 @@
 package Grupo_6_DDS.WicketSeguidorDeCarrera.ui.wicket
 
 import java.util.List
+
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Materia
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Nota
 import org.apache.wicket.markup.html.WebPage
@@ -25,7 +26,7 @@ class SeguidorCarreraPage extends WebPage {
 	
 	
 	new () {
-		this.seguidor= new SeguidorCarrera
+		this.seguidor= new SeguidorCarrera()
 		val Form seguidorForm = new Form("seguidorCarreraForm", new CompoundPropertyModel(this.seguidor))
 		
 		this.agregarListaMaterias(seguidorForm)
