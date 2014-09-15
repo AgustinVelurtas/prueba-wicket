@@ -1,7 +1,6 @@
 package Grupo_6_DDS.WicketSeguidorDeCarrera.ui.wicket
 
 import java.util.List
-
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Materia
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Nota
 import org.apache.wicket.markup.html.WebPage
@@ -25,7 +24,7 @@ class SeguidorCarreraPage extends WebPage {
 	var SeguidorCarrera seguidor
 	
 	
-	new () {
+	new() {
 		this.seguidor= new SeguidorCarrera()
 		val Form seguidorForm = new Form("seguidorCarreraForm", new CompoundPropertyModel(this.seguidor))
 		
@@ -37,10 +36,10 @@ class SeguidorCarreraPage extends WebPage {
 	}
 	
 	def agregarAcciones(Form parent) {
-		parent.addChild(new XButton("Nueva Materia").onClick = [| this.agregarMateria(seguidor.materiaSeleccionada) ])
+		/*parent.addChild(new XButton("Nueva Materia").onClick = [| this.agregarMateria(seguidor.materiaSeleccionada) ])
 		parent.addChild(new XButton("Editar").onClick = [| this.editarNota(seguidor.notaSeleccionada) ])	
 		parent.addChild(new XButton("+").onClick = [| this.agregarNota() ])
-		parent.addChild(new XButton("-").onClick = [| this.eliminarNota(seguidor.notaSeleccionada) ])
+		parent.addChild(new XButton("-").onClick = [| this.eliminarNota(seguidor.notaSeleccionada) ])*/
 
 	}
 	
