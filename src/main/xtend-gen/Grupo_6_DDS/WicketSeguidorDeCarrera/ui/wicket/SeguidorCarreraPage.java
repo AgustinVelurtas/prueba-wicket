@@ -8,6 +8,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.ListChoice;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.PropertyModel;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.uqbar.wicket.xtend.WicketExtensionFactoryMethods;
 
@@ -21,8 +22,8 @@ public class SeguidorCarreraPage extends WebPage {
   public SeguidorCarreraPage() {
     SeguidorCarrera _seguidorCarrera = new SeguidorCarrera();
     this.seguidor = _seguidorCarrera;
-    CompoundPropertyModel _compoundPropertyModel = new CompoundPropertyModel(this.seguidor);
-    final Form seguidorForm = new Form("seguidorCarreraForm", _compoundPropertyModel);
+    CompoundPropertyModel<SeguidorCarrera> _compoundPropertyModel = new CompoundPropertyModel<SeguidorCarrera>(this.seguidor);
+    final Form seguidorForm = new Form<SeguidorCarrera>("seguidorCarreraForm", _compoundPropertyModel);
     this.agregarListaMaterias(seguidorForm);
     this._wicketExtensionFactoryMethods.addChild(this, seguidorForm);
   }
@@ -54,8 +55,11 @@ public class SeguidorCarreraPage extends WebPage {
   public MarkupContainer agregarListaMaterias(final Form parent) {
     MarkupContainer _xblockexpression = null;
     {
+      this.seguidor.show();
+      final Materia materiaSeleccionada = this.seguidor.getMateriaSeleccionada();
       final List<Materia> materias = this.seguidor.getMaterias();
-      final ListChoice listaMaterias = new ListChoice("listaMaterias", materias);
+      PropertyModel<Materia> _propertyModel = new PropertyModel<Materia>(this, "materiaSeleccionada");
+      final ListChoice listaMaterias = new ListChoice<Materia>("listaMaterias", _propertyModel, materias);
       _xblockexpression = this._wicketExtensionFactoryMethods.addChild(parent, listaMaterias);
     }
     return _xblockexpression;

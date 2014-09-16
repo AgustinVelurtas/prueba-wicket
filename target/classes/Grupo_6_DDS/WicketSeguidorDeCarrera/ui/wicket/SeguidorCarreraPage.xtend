@@ -18,6 +18,8 @@ import org.apache.wicket.model.Model
 import org.apache.wicket.markup.html.panel.Panel
 import org.uqbar.wicket.xtend.XButton
 import org.apache.wicket.markup.html.form.ListChoice
+import org.apache.wicket.model.PropertyModel
+import org.uqbar.commons.model.IModel
 
 class SeguidorCarreraPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -70,8 +72,10 @@ class SeguidorCarreraPage extends WebPage {
 	}
 
  def agregarListaMaterias(Form parent) {
+ 		seguidor.show
+ 		val Materia materiaSeleccionada = seguidor.materiaSeleccionada
 		val List<Materia> materias = seguidor.materias
-		val ListChoice listaMaterias = new ListChoice("listaMaterias", materias)
+		val ListChoice listaMaterias = new ListChoice("listaMaterias",new PropertyModel<Materia>(this, "materiaSeleccionada"),materias)
 		parent.addChild(listaMaterias)
 }
 	

@@ -5,6 +5,7 @@ import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.HomeUbicacionMaterias;
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Materia;
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.UbicacionMateria;
 import Grupo_6_DDS.WicketSeguidorDeCarrera.ui.wicket.SeguidorCarreraPage;
+import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.uqbar.commons.utils.ApplicationContext;
 
@@ -20,7 +21,7 @@ public class WicketApplication extends WebApplication {
     _instance_1.<HomeMaterias>configureSingleton(Materia.class, _homeMaterias);
   }
   
-  public Class getHomePage() {
+  public Class<? extends Page> getHomePage() {
     return SeguidorCarreraPage.class;
   }
 }
