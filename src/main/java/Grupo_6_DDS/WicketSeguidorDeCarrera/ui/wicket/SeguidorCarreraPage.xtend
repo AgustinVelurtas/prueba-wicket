@@ -18,14 +18,16 @@ import org.apache.wicket.model.Model
 import org.apache.wicket.markup.html.panel.Panel
 import org.uqbar.wicket.xtend.XButton
 import org.apache.wicket.markup.html.form.ListChoice
+import org.apache.wicket.model.PropertyModel
+import org.uqbar.commons.model.IModel
 
 class SeguidorCarreraPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
 	var SeguidorCarrera seguidor
 	
 	
-	new () {
-		this.seguidor= new SeguidorCarrera
+	new() {
+		this.seguidor= new SeguidorCarrera()
 		val Form seguidorForm = new Form("seguidorCarreraForm", new CompoundPropertyModel(this.seguidor))
 		
 		this.agregarListaMaterias(seguidorForm)
@@ -36,10 +38,10 @@ class SeguidorCarreraPage extends WebPage {
 	}
 	
 	def agregarAcciones(Form parent) {
-		parent.addChild(new XButton("Nueva Materia").onClick = [| this.agregarMateria(seguidor.materiaSeleccionada) ])
+		/*parent.addChild(new XButton("Nueva Materia").onClick = [| this.agregarMateria(seguidor.materiaSeleccionada) ])
 		parent.addChild(new XButton("Editar").onClick = [| this.editarNota(seguidor.notaSeleccionada) ])	
 		parent.addChild(new XButton("+").onClick = [| this.agregarNota() ])
-		parent.addChild(new XButton("-").onClick = [| this.eliminarNota(seguidor.notaSeleccionada) ])
+		parent.addChild(new XButton("-").onClick = [| this.eliminarNota(seguidor.notaSeleccionada) ])*/
 
 	}
 	
@@ -70,8 +72,10 @@ class SeguidorCarreraPage extends WebPage {
 	}
 
  def agregarListaMaterias(Form parent) {
+ 		seguidor.show
+ 		val Materia materiaSeleccionada = seguidor.materiaSeleccionada
 		val List<Materia> materias = seguidor.materias
-		val ListChoice listaMaterias = new ListChoice("listaMaterias", materias)
+		val ListChoice listaMaterias = new ListChoice("listaMaterias",new PropertyModel<Materia>(this, "materiaSeleccionada"),materias)
 		parent.addChild(listaMaterias)
 }
 	

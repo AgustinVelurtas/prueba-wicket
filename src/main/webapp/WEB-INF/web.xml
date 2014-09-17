@@ -21,7 +21,7 @@
  		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
 		<init-param>
 			<param-name>applicationClassName</param-name>
-			<param-value>Grupo_6_DDS.WicketSeguidorDeCarrera.WicketApplication</param-value>
+			<param-value>Grupo_6_DDS.WicketSeguidorDeCarrera.ui.wicket.app.WicketApplication</param-value>
  		</init-param>
  	</filter>
 
