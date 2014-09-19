@@ -28,8 +28,8 @@ class SeguidorCarreraPage extends WebPage {
 	
 	new() {
 		this.seguidor= new SeguidorCarrera()
+		seguidor.show
 		val Form seguidorForm = new Form("seguidorCarreraForm", new CompoundPropertyModel(this.seguidor))
-		
 		this.agregarListaMaterias(seguidorForm)
 		/*this.agregarDetallesMateria(seguidorForm)
 		this.agregarAcciones(seguidorForm)*/
@@ -71,15 +71,18 @@ class SeguidorCarreraPage extends WebPage {
 		agregarGrillaDeNotas(parent)*/
 	}
 
- def agregarListaMaterias(Form parent) {
- 		seguidor.show
- 		val Materia materiaSeleccionada = seguidor.materiaSeleccionada
-		val List<Materia> materias = seguidor.materias
-		val ListChoice listaMaterias = new ListChoice("listaMaterias",new PropertyModel<Materia>(this, "materiaSeleccionada"),materias)
-		parent.addChild(listaMaterias)
+ def agregarListaMaterias(Form<SeguidorCarreraPage> parent) {
+ 		val listView = new XListView("materias")
+		listView.populateItem = [ item |
+			item.model = item.modelObject.asCompoundModel
+			item.addChild(new Label("nombre"))
+			item.addChild(new XButton("editar").onClick = [| editar(item.modelObject) ])
+			]
+		parent.addChild(listView)
 }
 	
-	def editar(Materia materia){
-		
+	def editar(Object object) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
+
 }
