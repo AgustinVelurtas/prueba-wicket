@@ -18,19 +18,23 @@
         </table>
         
         <form wicket:id="seguidorCarreraForm" class="form-vertical">
-           		<p>
-           		<label>Materias</label>
-        		<tr wicket:id="materias">
-	                   	<td>
-	                   	    <span wicket:id="nombre">unNombre</span> 
-	               	    </td> 
-	               	    <td> 
-	           	            <div class="btn-group">
-	           	        		<button wicket:id="editar" class="btn-link">Editar</button>
-	           	        	</div> 
-	   	                </td> 
-	               	</tr>
-                </p> 
+           		<table class="table table-striped table-bordered table-condensed">
+           			<thead>
+           				<label>Materias</label>
+           			</thead>
+        			<tbody>
+	        			<tr wicket:id="materias">
+		                   	<td>
+		                   	    <span wicket:id="nombre">unNombre</span> 
+		               	    </td> 
+		               	    <td> 
+		           	            <div class="btn-group">
+		           	        		<button wicket:id="editar" class="btn-link">Editar</button>
+		           	        	</div> 
+		   	                </td> 
+		               	</tr>
+		           </tbody>
+	            </table>
             <br/>
      		</form>
      	 </div>
