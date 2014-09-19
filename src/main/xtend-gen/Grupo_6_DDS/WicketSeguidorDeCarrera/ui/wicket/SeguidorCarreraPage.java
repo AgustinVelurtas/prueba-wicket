@@ -1,5 +1,6 @@
 package Grupo_6_DDS.WicketSeguidorDeCarrera.ui.wicket;
 
+import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Materia;
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.SeguidorCarrera;
 import org.apache.wicket.MarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
@@ -21,13 +22,16 @@ public class SeguidorCarreraPage extends WebPage {
   
   private SeguidorCarrera seguidor;
   
+  private Materia materiaElegida;
+  
   public SeguidorCarreraPage() {
     SeguidorCarrera _seguidorCarrera = new SeguidorCarrera();
     this.seguidor = _seguidorCarrera;
     this.seguidor.show();
     CompoundPropertyModel<SeguidorCarrera> _compoundPropertyModel = new CompoundPropertyModel<SeguidorCarrera>(this.seguidor);
-    final Form seguidorForm = new Form<SeguidorCarrera>("seguidorCarreraForm", _compoundPropertyModel);
+    final Form<SeguidorCarrera> seguidorForm = new Form<SeguidorCarrera>("seguidorCarreraForm", _compoundPropertyModel);
     this.agregarListaMaterias(seguidorForm);
+    this.agregarDetallesMateria(seguidorForm);
     this._wicketExtensionFactoryMethods.addChild(this, seguidorForm);
   }
   
@@ -55,21 +59,21 @@ public class SeguidorCarreraPage extends WebPage {
     return null;
   }
   
-  public MarkupContainer agregarListaMaterias(final Form<SeguidorCarreraPage> parent) {
+  public MarkupContainer agregarListaMaterias(final Form<SeguidorCarrera> parent) {
     MarkupContainer _xblockexpression = null;
     {
-      final XListView<Object> listView = new XListView<Object>("materias");
-      final Procedure1<ListItem<Object>> _function = new Procedure1<ListItem<Object>>() {
-        public void apply(final ListItem<Object> item) {
-          Object _modelObject = item.getModelObject();
-          CompoundPropertyModel<Object> _asCompoundModel = SeguidorCarreraPage.this._wicketExtensionFactoryMethods.<Object>asCompoundModel(_modelObject);
+      final XListView<Materia> listView = new XListView<Materia>("materias");
+      final Procedure1<ListItem<Materia>> _function = new Procedure1<ListItem<Materia>>() {
+        public void apply(final ListItem<Materia> item) {
+          Materia _modelObject = item.getModelObject();
+          CompoundPropertyModel<Materia> _asCompoundModel = SeguidorCarreraPage.this._wicketExtensionFactoryMethods.<Materia>asCompoundModel(_modelObject);
           item.setModel(_asCompoundModel);
           Label _label = new Label("nombre");
           SeguidorCarreraPage.this._wicketExtensionFactoryMethods.addChild(item, _label);
           XButton _xButton = new XButton("editar");
           final Procedure0 _function = new Procedure0() {
             public void apply() {
-              Object _modelObject = item.getModelObject();
+              Materia _modelObject = item.getModelObject();
               SeguidorCarreraPage.this.editar(_modelObject);
             }
           };
@@ -83,7 +87,7 @@ public class SeguidorCarreraPage extends WebPage {
     return _xblockexpression;
   }
   
-  public void editar(final Object object) {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+  public void editar(final Materia materiaElegida) {
+    this.seguidor.setMateriaSeleccionada(materiaElegida);
   }
 }

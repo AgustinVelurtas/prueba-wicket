@@ -24,15 +24,18 @@ import org.uqbar.commons.model.IModel
 class SeguidorCarreraPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
 	var SeguidorCarrera seguidor
-	
+	var Materia materiaElegida
 	
 	new() {
 		this.seguidor= new SeguidorCarrera()
 		seguidor.show
-		val Form seguidorForm = new Form("seguidorCarreraForm", new CompoundPropertyModel(this.seguidor))
+		
+		val Form<SeguidorCarrera> seguidorForm = new Form("seguidorCarreraForm", new CompoundPropertyModel(this.seguidor))
 		this.agregarListaMaterias(seguidorForm)
-		/*this.agregarDetallesMateria(seguidorForm)
-		this.agregarAcciones(seguidorForm)*/
+		
+		//val Form materiaForm= new Form("materiaForm",new CompoundPropertyModel(this.seguidor.materiaSeleccionada))
+		this.agregarDetallesMateria(seguidorForm)
+		//this.agregarAcciones(seguidorForm)
 		
 		this.addChild(seguidorForm)	
 	}
@@ -61,17 +64,16 @@ class SeguidorCarreraPage extends WebPage {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
-	def agregarDetallesMateria(Form parent) {/*
+	def agregarDetallesMateria(Form parent) {//Esto es lo que muestra cuando hace editar
 		//Info de la materia elegida		
-		parent.addChild(new Label("nombre"))
-		parent.addChild(new)
+		/*parent.addChild(new Label("nombre"))
 		parent.addChild(new Label("anioCursada"))
 		parent.addChild(new CheckBox("model.finalAprobado").setEnabled(model.finalAprobado))
 		parent.addChild(new Label("profesor".setText(model.profesor)
 		agregarGrillaDeNotas(parent)*/
 	}
 
- def agregarListaMaterias(Form<SeguidorCarreraPage> parent) {
+ def agregarListaMaterias(Form<SeguidorCarrera> parent) {
  		val listView = new XListView("materias")
 		listView.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
@@ -81,8 +83,8 @@ class SeguidorCarreraPage extends WebPage {
 		parent.addChild(listView)
 }
 	
-	def editar(Object object) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	def editar(Materia materiaElegida) {
+		seguidor.materiaSeleccionada= materiaElegida
 	}
 
 }
