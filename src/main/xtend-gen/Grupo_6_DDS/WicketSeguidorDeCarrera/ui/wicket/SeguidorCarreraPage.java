@@ -16,7 +16,6 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -187,15 +186,8 @@ public class SeguidorCarreraPage extends WebPage {
     return this.seguidor.agregarMateria(materia);
   }
   
-  public String editar(final Materia materiaElegida) {
-    String _xblockexpression = null;
-    {
-      this.seguidor.setMateriaSeleccionada(materiaElegida);
-      Materia _materiaSeleccionada = this.seguidor.getMateriaSeleccionada();
-      String _nombre = _materiaSeleccionada.getNombre();
-      _xblockexpression = InputOutput.<String>println(_nombre);
-    }
-    return _xblockexpression;
+  public void editar(final Materia materiaElegida) {
+    this.seguidor.setMateriaSeleccionada(materiaElegida);
   }
   
   public Nota getGetNotaSeleccionada() {

@@ -28,16 +28,16 @@ class SeguidorCarreraPage extends WebPage {
 	var SeguidorCarrera seguidor
 	
 	new() {
+		//Inicio del dominio
 		this.seguidor= new SeguidorCarrera()
 		seguidor.show
 		this.seguidor.materiaSeleccionada= this.seguidor.materias.head
-		
+		//Creacion de formularios
 		val Form<SeguidorCarrera> seguidorForm = new Form("seguidorCarreraForm", new CompoundPropertyModel(this.seguidor))
 		this.agregarListaMaterias(seguidorForm)
 		
 		val Form<Materia> materiaForm= new Form("materiaForm",new CompoundPropertyModel(this.seguidor.materiaSeleccionada))
 		this.agregarDetallesMateria(materiaForm)
-		//this.agregarAcciones(seguidorForm)
 		
 		this.addChild(seguidorForm)	
 		this.addChild(materiaForm)
@@ -76,6 +76,7 @@ class SeguidorCarreraPage extends WebPage {
 		 	item.addChild(new XButton("seleccionar").onClick= [|seguidor.notaSeleccionada= item.modelObject])
 		 ]
 		 parent.addChild(listView)
+		 //Botones
 		 parent.addChild(new XButton("+").onClick = [| this.agregarNota()])
 		 parent.addChild(new XButton("-").onClick = [| this.eliminarNota()])
 		 parent.addChild(new XButton("editarNota").onClick = [| this.editarNotaPage()])
@@ -105,7 +106,6 @@ class SeguidorCarreraPage extends WebPage {
 	
 	def editar(Materia materiaElegida) {
 		seguidor.materiaSeleccionada= materiaElegida
-		println(seguidor.materiaSeleccionada.nombre)
 	}
 	
 	def getGetNotaSeleccionada() {
