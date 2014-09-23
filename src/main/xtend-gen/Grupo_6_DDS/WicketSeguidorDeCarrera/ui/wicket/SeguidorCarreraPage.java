@@ -1,8 +1,11 @@
 package Grupo_6_DDS.WicketSeguidorDeCarrera.ui.wicket;
 
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Materia;
+import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Nota;
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.SeguidorCarrera;
 import Grupo_6_DDS.WicketSeguidorDeCarrera.ui.wicket.AgregarMateriaPage;
+import Grupo_6_DDS.WicketSeguidorDeCarrera.ui.wicket.EditarNotaPage;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
@@ -48,16 +51,27 @@ public class SeguidorCarreraPage extends WebPage {
     this._wicketExtensionFactoryMethods.addChild(this, materiaForm);
   }
   
-  public void eliminarNota(final Object object) {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+  public boolean eliminarNota() {
+    Materia _materiaSeleccionada = this.seguidor.getMateriaSeleccionada();
+    ArrayList<Nota> _notas = _materiaSeleccionada.getNotas();
+    Nota _notaSeleccionada = this.seguidor.getNotaSeleccionada();
+    return _notas.remove(_notaSeleccionada);
   }
   
-  public void agregarNota(final Object object) {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+  public boolean agregarNota() {
+    Materia _materiaSeleccionada = this.seguidor.getMateriaSeleccionada();
+    ArrayList<Nota> _notas = _materiaSeleccionada.getNotas();
+    Nota _nota = new Nota();
+    return _notas.add(_nota);
   }
   
-  public void editarNota(final Object object) {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+  public void editarNotaPage() {
+    EditarNotaPage _editarNotaPage = new EditarNotaPage(this);
+    this.setResponsePage(_editarNotaPage);
+  }
+  
+  public void setNotaSeleccionada(final Nota nota) {
+    this.seguidor.setNotaSeleccionada(nota);
   }
   
   public MarkupContainer agregarDetallesMateria(final Form<Materia> parent) {
@@ -74,11 +88,11 @@ public class SeguidorCarreraPage extends WebPage {
       this._wicketExtensionFactoryMethods.addChild(parent, _setEnabled);
       Label _label_2 = new Label("profesor");
       this._wicketExtensionFactoryMethods.addChild(parent, _label_2);
-      final XListView<Object> listView = new XListView<Object>("notas");
-      final Procedure1<ListItem<Object>> _function = new Procedure1<ListItem<Object>>() {
-        public void apply(final ListItem<Object> item) {
-          Object _modelObject = item.getModelObject();
-          CompoundPropertyModel<Object> _asCompoundModel = SeguidorCarreraPage.this._wicketExtensionFactoryMethods.<Object>asCompoundModel(_modelObject);
+      final XListView<Nota> listView = new XListView<Nota>("notas");
+      final Procedure1<ListItem<Nota>> _function = new Procedure1<ListItem<Nota>>() {
+        public void apply(final ListItem<Nota> item) {
+          Nota _modelObject = item.getModelObject();
+          CompoundPropertyModel<Nota> _asCompoundModel = SeguidorCarreraPage.this._wicketExtensionFactoryMethods.<Nota>asCompoundModel(_modelObject);
           item.setModel(_asCompoundModel);
           Label _label = new Label("fecha");
           SeguidorCarreraPage.this._wicketExtensionFactoryMethods.addChild(item, _label);
@@ -86,10 +100,43 @@ public class SeguidorCarreraPage extends WebPage {
           SeguidorCarreraPage.this._wicketExtensionFactoryMethods.addChild(item, _label_1);
           Label _label_2 = new Label("aprobado");
           SeguidorCarreraPage.this._wicketExtensionFactoryMethods.addChild(item, _label_2);
+          XButton _xButton = new XButton("seleccionar");
+          final Procedure0 _function = new Procedure0() {
+            public void apply() {
+              Nota _modelObject = item.getModelObject();
+              SeguidorCarreraPage.this.seguidor.setNotaSeleccionada(_modelObject);
+            }
+          };
+          XButton _setOnClick = _xButton.setOnClick(_function);
+          SeguidorCarreraPage.this._wicketExtensionFactoryMethods.addChild(item, _setOnClick);
         }
       };
       listView.setPopulateItem(_function);
-      _xblockexpression = this._wicketExtensionFactoryMethods.addChild(parent, listView);
+      this._wicketExtensionFactoryMethods.addChild(parent, listView);
+      XButton _xButton = new XButton("+");
+      final Procedure0 _function_1 = new Procedure0() {
+        public void apply() {
+          SeguidorCarreraPage.this.agregarNota();
+        }
+      };
+      XButton _setOnClick = _xButton.setOnClick(_function_1);
+      this._wicketExtensionFactoryMethods.addChild(parent, _setOnClick);
+      XButton _xButton_1 = new XButton("-");
+      final Procedure0 _function_2 = new Procedure0() {
+        public void apply() {
+          SeguidorCarreraPage.this.eliminarNota();
+        }
+      };
+      XButton _setOnClick_1 = _xButton_1.setOnClick(_function_2);
+      this._wicketExtensionFactoryMethods.addChild(parent, _setOnClick_1);
+      XButton _xButton_2 = new XButton("editarNota");
+      final Procedure0 _function_3 = new Procedure0() {
+        public void apply() {
+          SeguidorCarreraPage.this.editarNotaPage();
+        }
+      };
+      XButton _setOnClick_2 = _xButton_2.setOnClick(_function_3);
+      _xblockexpression = this._wicketExtensionFactoryMethods.addChild(parent, _setOnClick_2);
     }
     return _xblockexpression;
   }
@@ -121,7 +168,7 @@ public class SeguidorCarreraPage extends WebPage {
       XButton _xButton = new XButton("agregarMateria");
       final Procedure0 _function_1 = new Procedure0() {
         public void apply() {
-          SeguidorCarreraPage.this.agregarMateria();
+          SeguidorCarreraPage.this.agregarMateriaPage();
         }
       };
       XButton _setOnClick = _xButton.setOnClick(_function_1);
@@ -130,10 +177,14 @@ public class SeguidorCarreraPage extends WebPage {
     return _xblockexpression;
   }
   
-  public void agregarMateria() {
+  public void agregarMateriaPage() {
     AgregarMateriaPage _agregarMateriaPage = new AgregarMateriaPage(this);
     this.setResponsePage(_agregarMateriaPage);
     this.seguidor.show();
+  }
+  
+  public boolean agregarMateria(final Materia materia) {
+    return this.seguidor.agregarMateria(materia);
   }
   
   public String editar(final Materia materiaElegida) {
@@ -145,5 +196,9 @@ public class SeguidorCarreraPage extends WebPage {
       _xblockexpression = InputOutput.<String>println(_nombre);
     }
     return _xblockexpression;
+  }
+  
+  public Nota getGetNotaSeleccionada() {
+    return this.seguidor.getNotaSeleccionada();
   }
 }

@@ -30,11 +30,23 @@ public class AgregarMateriaPage extends WebPage {
     };
     XButton _setOnClick = _xButton.setOnClick(_function);
     this._wicketExtensionFactoryMethods.addChild(nuevaMateriaForm, _setOnClick);
+    XButton _xButton_1 = new XButton("volver");
+    final Procedure0 _function_1 = new Procedure0() {
+      public void apply() {
+        AgregarMateriaPage.this.volver(page);
+      }
+    };
+    XButton _setOnClick_1 = _xButton_1.setOnClick(_function_1);
+    this._wicketExtensionFactoryMethods.addChild(nuevaMateriaForm, _setOnClick_1);
     this._wicketExtensionFactoryMethods.addChild(this, nuevaMateriaForm);
   }
   
-  public boolean agregar(final Materia materia, final SeguidorCarreraPage page) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field seguidor is not visible");
+  public void volver(final SeguidorCarreraPage page) {
+    this.setResponsePage(page);
+  }
+  
+  public void agregar(final Materia materia, final SeguidorCarreraPage page) {
+    page.agregarMateria(materia);
+    this.setResponsePage(page);
   }
 }

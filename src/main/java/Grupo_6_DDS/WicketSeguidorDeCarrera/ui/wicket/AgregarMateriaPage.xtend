@@ -16,11 +16,17 @@ class AgregarMateriaPage extends WebPage{
 		val Form<Materia> nuevaMateriaForm= new Form("nuevaMateriaForm",new CompoundPropertyModel(nuevaMateria))
 		nuevaMateriaForm.addChild(new TextField<String>("nombre"))
 		nuevaMateriaForm.addChild(new XButton("aceptar").onClick = [| agregar(nuevaMateria,page) ])
+		nuevaMateriaForm.addChild(new XButton("volver").onClick = [| volver(page) ])
 		this.addChild(nuevaMateriaForm)
 	}
 	
+	def volver(SeguidorCarreraPage page) {
+		responsePage = page
+	}
+	
 	def agregar(Materia materia, SeguidorCarreraPage page) {
-		page.seguidor.agregarMateria(materia)
+		page.agregarMateria(materia)
+		responsePage = page
 	}
 	
 	

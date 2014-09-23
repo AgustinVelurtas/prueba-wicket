@@ -44,18 +44,21 @@ class SeguidorCarreraPage extends WebPage {
 	}
 	
 	
-	def eliminarNota(Object object) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	def eliminarNota() {
+		seguidor.materiaSeleccionada.notas.remove(seguidor.notaSeleccionada)
 	}
 	
-	def agregarNota(Object object) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	def agregarNota() {
+		seguidor.materiaSeleccionada.notas.add(new Nota)
 	}
 	
-	def editarNota(Object object) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	def editarNotaPage() {
+		responsePage = new EditarNotaPage(this)
 	}
 	
+	def setNotaSeleccionada(Nota nota){
+		seguidor.notaSeleccionada= nota
+	}
 	
 	def agregarDetallesMateria(Form<Materia> parent) {
 		//Info de la materia elegida		
@@ -70,8 +73,13 @@ class SeguidorCarreraPage extends WebPage {
 		 	item.addChild(new Label("fecha"))
 		 	item.addChild(new Label("descripcion"))
 		 	item.addChild(new Label("aprobado"))
+		 	item.addChild(new XButton("seleccionar").onClick= [|seguidor.notaSeleccionada= item.modelObject])
 		 ]
 		 parent.addChild(listView)
+		 parent.addChild(new XButton("+").onClick = [| this.agregarNota()])
+		 parent.addChild(new XButton("-").onClick = [| this.eliminarNota()])
+		 parent.addChild(new XButton("editarNota").onClick = [| this.editarNotaPage()])
+		 
 	}
 
  def agregarListaMaterias(Form<SeguidorCarrera> parent) {
@@ -82,18 +90,26 @@ class SeguidorCarreraPage extends WebPage {
 			item.addChild(new XButton("editar").onClick = [| editar(item.modelObject) ])
 			]
 		parent.addChild(listView)
-		parent.addChild(new XButton("agregarMateria").onClick=[|agregarMateria()])
+		parent.addChild(new XButton("agregarMateria").onClick=[|agregarMateriaPage()])
 }
 	
-	def agregarMateria() {
+	def agregarMateriaPage() {
 		responsePage = new AgregarMateriaPage(this) 
 		
 		seguidor.show
 	}
 	
+	def agregarMateria(Materia materia){
+		this.seguidor.agregarMateria(materia)
+	}
+	
 	def editar(Materia materiaElegida) {
 		seguidor.materiaSeleccionada= materiaElegida
 		println(seguidor.materiaSeleccionada.nombre)
+	}
+	
+	def getGetNotaSeleccionada() {
+		seguidor.notaSeleccionada
 	}
 
 }
