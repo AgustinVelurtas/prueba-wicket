@@ -1,11 +1,12 @@
 package Grupo_6_DDS.WicketSeguidorDeCarrera.domain;
 
+import java.io.Serializable;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.uqbar.commons.utils.Observable;
 
 @Observable
 @SuppressWarnings("all")
-public class Nota implements Cloneable {
+public class Nota implements Cloneable, Serializable {
   private String _fecha;
   
   public String getFecha() {

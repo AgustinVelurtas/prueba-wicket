@@ -3,6 +3,7 @@ package Grupo_6_DDS.WicketSeguidorDeCarrera.domain;
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Nota;
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.UbicacionMateria;
 import com.google.common.base.Objects;
+import java.io.Serializable;
 import java.util.ArrayList;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -11,7 +12,7 @@ import org.uqbar.commons.utils.Observable;
 
 @Observable
 @SuppressWarnings("all")
-public class Materia extends Entity implements Cloneable {
+public class Materia extends Entity implements Cloneable, Serializable {
   private String _nombre;
   
   public String getNombre() {

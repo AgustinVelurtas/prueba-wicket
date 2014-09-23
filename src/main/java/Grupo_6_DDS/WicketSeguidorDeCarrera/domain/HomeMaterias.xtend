@@ -12,7 +12,7 @@ import org.uqbar.commons.utils.ApplicationContext
 import org.apache.commons.collections15.Predicate
 
 @Observable
-class HomeMaterias extends CollectionBasedHome<Materia> {
+class HomeMaterias extends CollectionBasedHome<Materia> implements Serializable{
 			
 	new(){
 		this.init

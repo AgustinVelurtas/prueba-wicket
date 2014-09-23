@@ -3,9 +3,10 @@ package Grupo_6_DDS.WicketSeguidorDeCarrera.domain
 import java.util.ArrayList
 import org.uqbar.commons.utils.Observable
 import org.uqbar.commons.model.Entity
+import java.io.Serializable
 
 @Observable
-class Materia extends Entity implements Cloneable{
+class Materia extends Entity implements Cloneable, Serializable  {
 	@Property 
 	String nombre
 	@Property

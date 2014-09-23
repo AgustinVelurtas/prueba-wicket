@@ -1,11 +1,12 @@
 package Grupo_6_DDS.WicketSeguidorDeCarrera.domain;
 
+import java.io.Serializable;
 import org.uqbar.commons.model.Entity;
 import org.uqbar.commons.utils.Observable;
 
 @Observable
 @SuppressWarnings("all")
-public class UbicacionMateria extends Entity {
+public class UbicacionMateria extends Entity implements Serializable {
   private String _nivel;
   
   public String getNivel() {

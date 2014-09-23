@@ -5,9 +5,10 @@ import org.uqbar.commons.utils.Observable
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.UbicacionMateria
 import java.util.List
 import org.apache.commons.collections15.Predicate;
+import java.io.Serializable
 
 @Observable
-class HomeUbicacionMaterias extends CollectionBasedHome<UbicacionMateria>{
+class HomeUbicacionMaterias extends CollectionBasedHome<UbicacionMateria> implements Serializable{
 	
 	new(){
 		this.init

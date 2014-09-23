@@ -1,9 +1,10 @@
 package Grupo_6_DDS.WicketSeguidorDeCarrera.domain
 
 import org.uqbar.commons.utils.Observable
+import java.io.Serializable
 
 @Observable
-class Nota implements Cloneable {
+class Nota implements Cloneable,Serializable {
 	@Property
 	String fecha
 	@Property 

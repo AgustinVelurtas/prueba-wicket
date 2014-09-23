@@ -4,6 +4,7 @@ import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.HomeUbicacionMaterias;
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Materia;
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.Nota;
 import Grupo_6_DDS.WicketSeguidorDeCarrera.domain.UbicacionMateria;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.collections15.Predicate;
@@ -13,7 +14,7 @@ import org.uqbar.commons.utils.Observable;
 
 @Observable
 @SuppressWarnings("all")
-public class HomeMaterias extends CollectionBasedHome<Materia> {
+public class HomeMaterias extends CollectionBasedHome<Materia> implements Serializable {
   public HomeMaterias() {
     this.init();
   }

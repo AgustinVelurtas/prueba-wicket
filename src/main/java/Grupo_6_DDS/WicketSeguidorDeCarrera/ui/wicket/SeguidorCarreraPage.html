@@ -1,43 +1,80 @@
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<!-- Bootstrap --> 
-    	<link href="css/bootstrap.css" rel="stylesheet" media="screen">
-    	<link href="css/bootstrap-theme.css" rel="stylesheet" media="screen">  
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Seguidor de Carrera</title>
-    </head>
-    <body>
-	    <div class="container">
-        <table width="80%">
-            <tr>
-                <td>
-                    <h1>Seguidor de Carrera</h1>
-                </td>
-            </tr>
-        </table>
-        
-        <form wicket:id="seguidorCarreraForm" class="form-vertical">
-           		<table class="table table-striped table-bordered table-condensed">
-           			<thead>
-           				<label>Materias</label>
-           			</thead>
-        			<tbody>
-	        			<tr wicket:id="materias">
-		                   	<td>
-		                   	    <span wicket:id="nombre">unNombre</span> 
-		               	    </td> 
-		               	    <td> 
-		           	            <div class="btn-group">
-		           	        		<button wicket:id="editar" class="btn-link">Editar</button>
-		           	        	</div> 
-		   	                </td> 
-		               	</tr>
-		           </tbody>
-	            </table>
-            <br/>
-     		</form>
-     	 </div>
-     </body>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap -->
+<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap-theme.css" rel="stylesheet" media="screen">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Seguidor de Carrera</title>
+</head>
+<body>
+	<div class="container">
+		<table width="80%">
+			<tr>
+				<td>
+					<h1>Seguidor de Carrera</h1>
+				</td>
+			</tr>
+		</table>
+
+		<form wicket:id="seguidorCarreraForm" class="form-vertical">
+			<table class="table table-striped table-bordered table-condensed">
+				<thead>
+					<label>Materias</label>
+				</thead>
+				<tbody>
+					<tr wicket:id="materias">
+						<td><span wicket:id="nombre">unNombre</span></td>
+						<td>
+							<div class="btn-group">
+								<button wicket:id="editar" class="btn-link">Editar</button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="btn-group">
+				<button wicket:id="agregarMateria" class="btn-link">Nueva Materia</button>
+			</div>
+			<br />
+		</form>
+	</div>
+	<div class="container">
+		<table width="80%">
+			<tr>
+				<td>
+					<h1></h1>
+				</td>
+			</tr>
+		</table>
+		<form wicket:id="materiaForm" class="form-vertical">
+			<div class="form-group">
+				<span wicket:id="nombre">unNombre</span> <br> <label
+					for="anioCursada">Anio de Cursada:</label> <span
+					wicket:id="anioCursada">anioCursada</span> <label
+					for="finalAprobado"> Final Aprobado: </label> <input
+					type="checkbox" wicket:id="finalAprobado" /> <br /> <label
+					for="profesorDeCursada">Profesor de Cursada:</label> <span
+					wicket:id="profesor">profesorCursada</span> <br>
+				<table class="table table-striped table-bordered table-condensed">
+					<thead>
+						<label>Notas de Cursada:</label>
+						<th id="main">Fecha</th>
+						<th id="main">Descripcion</th>
+						<th id="main">Aprobado</th>
+					</thead>
+					<tbody>
+						<tr wicket:id="notas">
+							<td><span wicket:id="fecha">unaFecha</span></td>
+							<td><span wicket:id="descripcion">unaDesc</span></td>
+							<td><span wicket:id="aprobado">aprob</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</form>
+	</div>
+
+</body>
 </html>
 

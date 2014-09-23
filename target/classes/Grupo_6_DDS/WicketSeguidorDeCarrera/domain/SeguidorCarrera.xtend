@@ -37,7 +37,7 @@ class SeguidorCarrera implements Serializable {
 	}
 	
 	def HomeMaterias getHomeMaterias() {
-		ApplicationContext.instance.getSingleton(typeof(Materia))
+		ApplicationContext::instance.getSingleton(typeof(Materia))
 	}
 	
 		
