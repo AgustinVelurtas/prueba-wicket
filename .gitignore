@@ -1,3 +1,5 @@
 .project
 .classpath
 .settings
+.gitignore~
+pom.xml~
