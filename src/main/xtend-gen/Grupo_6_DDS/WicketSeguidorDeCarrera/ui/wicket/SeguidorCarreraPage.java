@@ -32,6 +32,8 @@ public class SeguidorCarreraPage extends WebPage {
   @Observable
   private SeguidorCarrera seguidor;
   
+  private Form<Materia> materiaForm;
+  
   public SeguidorCarreraPage() {
     SeguidorCarrera _seguidorCarrera = new SeguidorCarrera();
     this.seguidor = _seguidorCarrera;
@@ -44,10 +46,11 @@ public class SeguidorCarreraPage extends WebPage {
     this.agregarListaMaterias(seguidorForm);
     Materia _materiaSeleccionada = this.seguidor.getMateriaSeleccionada();
     CompoundPropertyModel<Materia> _compoundPropertyModel_1 = new CompoundPropertyModel<Materia>(_materiaSeleccionada);
-    final Form<Materia> materiaForm = new Form<Materia>("materiaForm", _compoundPropertyModel_1);
-    this.agregarDetallesMateria(materiaForm);
+    Form<Materia> _form = new Form<Materia>("materiaForm", _compoundPropertyModel_1);
+    this.materiaForm = _form;
+    this.agregarDetallesMateria(this.materiaForm);
     this._wicketExtensionFactoryMethods.addChild(this, seguidorForm);
-    this._wicketExtensionFactoryMethods.addChild(this, materiaForm);
+    this._wicketExtensionFactoryMethods.addChild(this, this.materiaForm);
   }
   
   public boolean eliminarNota() {
@@ -188,6 +191,9 @@ public class SeguidorCarreraPage extends WebPage {
   
   public void editar(final Materia materiaElegida) {
     this.seguidor.setMateriaSeleccionada(materiaElegida);
+    Materia _materiaSeleccionada = this.seguidor.getMateriaSeleccionada();
+    CompoundPropertyModel<Materia> _compoundPropertyModel = new CompoundPropertyModel<Materia>(_materiaSeleccionada);
+    this.materiaForm.setModel(_compoundPropertyModel);
   }
   
   public Nota getGetNotaSeleccionada() {
